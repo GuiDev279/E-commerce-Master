@@ -120,7 +120,7 @@ function atualizarValorTotalCarrinho() {
         total += produto.preco * produto.quantidade;
     });
 
-    document.querySelector('.total-carrinho').textContent = `R$ ${total.toFixed(2).replace(".", ",")}`;
+    document.querySelector('.total-carrinho').textContent = `Total: R$ ${total.toFixed(2).replace(".", ",")}`;
 }
 
 function atualizarCarrinhoETabela() {
