@@ -1,0 +1,129 @@
+@media(min-width: 940px) {
+    .cabecalho .menu-principal{
+        display: block;
+        position: static;
+        width: auto;
+    }
+
+    .cabecalho .menu-principal ul {
+        flex-direction: row;
+        cursor: pointer;
+    }
+    .menu-hamburguer{
+        display: none;
+    }
+
+}
+
+@media(min-width: 1170px){
+    .cabecalho{
+        max-width: 1170px;
+        margin: 0 auto;
+    }
+}
+
+/* main */
+
+@media(min-width: 769px){
+    main .produtos .produto{
+        min-width: 368px;
+    }
+
+    main .produtos ul {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        gap: 2rem;
+
+    }
+
+    .rodape .container{
+        flex-direction: row;
+        justify-content: center;
+        width: 100%;
+        gap: 13rem ;
+        padding: 4rem 1rem;
+    }
+
+    .modal .container{
+        background-color: var(--cor-cinza-escura);
+        max-width: 720px;
+        height: auto;
+        padding: 1.5rem;
+        margin: 0 auto;
+    }
+
+    .modal .container th{
+        background-color: var(--cor-neutra-escura);
+    }
+
+    .th-produto,
+    .th-total,
+    .td-produto,
+    .td-preco-total,
+    .th-remover {
+        display: table-cell;
+    }
+
+    td img{
+        width: 48px;
+        height: auto;
+        border-radius: 4px;
+    }
+
+    .modal.is-open{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: rgba(00, 00, 00, 0.9);
+    }
+
+    
+
+    tbody td{
+        border: 2px solid var(--cor-neutra-escura);
+    }
+
+    table{
+        border-collapse: collapse;
+    }
+
+    .container-preco{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .total-carrinho{
+        text-align: right;
+    }
+
+    .finalizar-compra{
+        width: 369px;
+        border-radius: 4px;
+    }
+
+    .td-preco-total{
+        white-space: nowrap;
+        font-size: 0.9rem;
+        font-weight: 300;
+        color: var(--cor-neutra-clara);
+    }
+
+    .td-quantidade{
+        text-align: center;
+    }
+}
+
+@media(min-width: 1170px){
+    main section{
+        max-width: 1170px;
+        margin: 0 auto ;
+    }
+}
+
+@media(min-width: 1120px){
+    .rodape .container{
+        width: 1170px;
+        margin: 0 auto;
+    }
+}

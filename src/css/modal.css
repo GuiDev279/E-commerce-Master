@@ -1,0 +1,127 @@
+.modal{
+    position: fixed;
+    top: 0;
+    left:0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    display: none;
+}
+
+.modal.is-open{
+    display: block;
+}
+
+.modal .container{
+    background-color: var(--cor-neutra-escura);
+    color: var( --cor-neutra-clara);
+    display: flex;
+    flex-direction: column;
+    padding: 2.5rem 1.2rem;
+    height: 100vh;
+}
+
+.modal header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.modal header h2{
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    
+}
+.modal header .fechar{
+    background-image: url(/assets/images/icone_fechar.svg);
+    width: 24px;
+    height: 24px;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+}
+
+.th-produto,
+.th-total,
+.td-produto,
+.td-preco-total,
+.th-remover {
+  display: none;
+}
+
+tbody td{
+    padding: 0.8rem;
+    vertical-align: middle;
+    background-color: var(--cor-cinza-escura);
+    color: var(--cor-roxa-clara);
+    letter-spacing: 0.1rem;
+}
+
+thead th{
+    padding: 0.8rem;
+    letter-spacing: 0.1rem;
+}
+
+td.td-preco-unitario{
+    color: var(--cor-neutra-clara);
+    font-size: 0.9rem;
+    font-weight: 300;
+    white-space: nowrap;
+}
+
+td.td-quantidade input{
+    width: 48px;
+    padding: 4px;
+    background-color: transparent;
+    border: 1px solid var(--cor-primaria);
+    border-radius: 4px;
+    color: var(--cor-cinza-clara);
+    font-size: 0.9rem;
+    text-align: center;
+}
+td .btn-remover{
+    display: block;
+    background-image: url(/assets/images/icone_deletar.svg);
+    width: 24px;
+    height: 24px;
+    padding: 0.5rem;
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+    margin: auto;
+}
+
+.container-preco{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+}
+
+.total-carrinho{
+    background-color: var(--cor-cinza-escura);
+    width: 100%;
+    padding: 1rem 0.5rem;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+}
+
+.finalizar-compra{
+    background-color: var(--cor-primaria);
+    color: var(--cor-neutra-clara);
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    font-size: 1rem;
+    cursor: pointer;
+    letter-spacing: 0.1rem;
+    transition: background-color 0.3s ease-in-out;
+}
+
+.finalizar-compra:hover{
+    background-color: var(--cor-primaria-hover);
+}

@@ -1,0 +1,91 @@
+.cabecalho {
+    grid-area: header;
+    padding: 1.8rem 0;
+}
+
+.cabecalho .menu-principal{
+    display: none;
+    background-color: var(--cor-neutra-escura);
+    position: absolute;
+    top: 5rem;
+    left: 0;
+    width: 100%;
+    padding: 1rem;
+}
+
+.cabecalho .menu-principal ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 1rem 0;
+}
+
+.cabecalho ul li a{
+    color: var(--cor-neutra-clara);
+    letter-spacing: 0.1rem;
+    padding: 1rem;
+}
+
+.cabecalho ul li a:hover{
+    background-color: var(--cor-primaria-hover);
+}
+
+.cabecalho.menu-ativo .menu-principal{
+    display: block;
+}
+
+.header-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    padding: 0 1rem;
+}
+
+.header-esquerda{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.menu-hamburguer{
+    width: 24px;
+    height: 24px;
+    background: transparent;
+    border: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.3rem;
+    cursor: pointer;
+}
+.menu-hamburguer span{
+    display: block;
+    height: 4px;
+    width: 100%;
+    background-color: #fff;
+}
+
+.btn-carrinho{
+    background: transparent;
+    border: none;
+    padding: 0.75rem;
+    position: relative;
+    cursor: pointer;
+}
+
+.btn-carrinho span{
+    color: var(--cor-neutra-clara);
+    background-color: var(--cor-primaria);
+    position: absolute;
+    font-weight: 600;
+    font-size: 0.7rem;
+    top: 29px;
+    left: 28px;
+    display: flex;
+    height: 16px;
+    width: 16px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+}

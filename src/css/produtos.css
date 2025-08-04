@@ -1,0 +1,92 @@
+main{
+    grid-area: main;
+    padding: 1rem;
+}
+
+main section h2{
+    color: var(--cor-neutra-clara);
+    font-size: 1.5rem;
+    font-weight: 400;
+    letter-spacing: 0.1rem;
+    margin-bottom: 2rem;
+}
+
+
+
+main .produtos ul{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+main .produtos .produto{
+    max-width: 368px;
+    border-radius: 14px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: var(--cor-cinza-escura);
+}
+
+main .produtos img{
+    width: 100%;
+    height: 334px;
+    border-top-left-radius: 14px;
+    border-top-right-radius: 14px;
+    display: block;
+    object-position: center;
+    object-fit: cover;
+}
+
+main .produto figcaption{
+    background-color: var(--cor-cinza-escura);
+    color: var(--cor-neutra-clara);
+    font-size: 1.2rem;
+    font-weight: 600;
+    letter-spacing: 0.1rem;
+    padding: 1.5rem 1.5rem 1.2rem;
+}
+
+main .produto .description{
+    background-color: var(--cor-cinza-escura);
+    color: var(--cor-neutra-clara);
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding:  0 1.5rem 1.5rem;
+    border-bottom-left-radius: 14px;
+    border-bottom-right-radius: 14px;
+
+}
+
+main  .description span{
+    color: var(--cor-cinza-clara);
+}
+
+main .description strong{
+    color: var(--cor-cinza-clara);
+    letter-spacing: 0.1rem;
+}
+
+main .description .preco{
+    font-size: 2rem;
+    margin-top: 1rem;
+    text-align: right;
+}
+
+main .description .adicionar-ao-carrinho{
+    background-color: var(--cor-primaria);
+    border: none;
+    border-radius: 8px;
+    color: var(--cor-neutra-clara);
+    padding: 1rem;
+    cursor: pointer;
+    margin-top: 0.5rem;
+    transition: background-color 0.3s ease-in-out;
+    font-size: 1.2rem;
+    letter-spacing: 0.1rem;
+}
+
+main .description .adicionar-ao-carrinho:hover{
+    background-color: var(--cor-primaria-hover);
+}
