@@ -46,7 +46,7 @@
                     <li><a href="#fale-conosco">Fale conosco</a></li>
                 </ul>
             </nav>
-            <button class="btn-carrinho">
+            <button class="btn-carrinho" data-micromodal-trigger="modal-1">
                 <img src="./assets/images/icone_carrinho.svg" alt="carrinho">
                 <span id="contador-carrinho">0</span>
             </button>
@@ -202,7 +202,7 @@
                                 </td>
                                 <td>Camiseta Dev em Dobro</td>
                                 <td class="td-preco-unitario">R$ 89,00</td>
-                                <td class="td-quantidade"><input type="number" value="1" min="1"></td>
+                                <td class="td-quantidade"><input type="number" value="1" min="1"/></td>
                                 <td class="td-preco-total">R$ 89,00</td>
                                 <td><button class="btn-remover" id="deletar"></button></td>
                             </tr>
@@ -228,6 +228,8 @@
     </div>
 
     <script src="https://unpkg.com/micromodal/dist/micromodal.min.js"></script>
+
+    <script src="./src/js/modal.js"></script>
 
     <script src="./src/js/carrinho.js"></script>
 </body>
