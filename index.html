@@ -197,12 +197,11 @@
                         <tbody>
                             <tr>
                                 <td class="td-produto">
-                                    <img src="./assets/images/camiseta_roxa.jpg" 
-                                    alt="camiseta_roxa">
+                                    <img src="./assets/images/camiseta_roxa.jpg" alt="camiseta_roxa">
                                 </td>
                                 <td>Camiseta Dev em Dobro</td>
                                 <td class="td-preco-unitario">R$ 89,00</td>
-                                <td class="td-quantidade"><input type="number" value="1" min="1"/></td>
+                                <td class="td-quantidade"><input type="number" value="1" min="1" /></td>
                                 <td class="td-preco-total">R$ 89,00</td>
                                 <td><button class="btn-remover" id="deletar"></button></td>
                             </tr>
@@ -218,7 +217,20 @@
                         </tbody>
                     </table>
                     <div class="container-preco">
-                        <span class="total-carrinho" id="total-carrinho">Total: R$ 0,00</span>
+                        <div class="container-cep-frete">
+                            <label for="cep">Calcular Frete:</label>
+                            <div class="container-cep-inputs">
+                            <input type="text" name="" id="input-cep" placeholder="Digite seu cep">
+                            <button id="btn-calcular-frete">Calcular Frete</button>
+                            </div>
+                        </div>
+                        <div class="container-preco-total">
+                            <span  id="subtotal-pedidos">Subtotal dos pedidos: 
+                            <span class="valor">R$ 00,00</span>
+                            </span>
+                            <span id="valor-frete">Valor do frete: <span></span></span>
+                            <span class="total-carrinho" id="total-carrinho">Total: R$ 1200,00</span>
+                        </div>
                         <button class="finalizar-compra">Finalizar compra</button>
                     </div>
                 </div>

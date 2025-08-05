@@ -125,3 +125,91 @@ td .btn-remover{
 .finalizar-compra:hover{
     background-color: var(--cor-primaria-hover);
 }
+
+.container-preco-total{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 16px;
+    font-size: 1rem;
+}
+
+#subtotal-pedidos,
+#valor-frete{
+    color: #e0e0e0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#valor-frete{
+    display: none;
+}
+
+#subtotal-pedidos .valor, #valor-frete .valor{
+    color:#6affb7;
+    font-weight: 500;
+    margin-left: 8px;
+}
+
+#total-carrinho{
+    color:#6affb7;
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-top: 8px;
+    display: block;
+    text-align: right;
+}
+
+#input-cep{
+    padding: 8px 12px;
+    width: 100%;
+    max-width: 220%;
+    border: 1px solid #6affb7;
+    border-radius: 6px;
+    background: transparent;
+    color: #6affb7;
+    font-size: 1rem;
+    font-weight: 400;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#input-cep::placeholder{
+    color: #6affb7;
+    opacity: 0.5;
+    font-weight: 400;
+}
+
+#btn-calcular-frete{
+    padding: 8px 20px;
+    border: 1px solid #6affb7;
+    border-radius: 6px;
+    background: transparent;
+    color: #6affb7;
+    font-size: 1rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s, color 0.2s;
+    outline: none;
+}
+
+#btn-calcular-frete:hover,
+#btn-calcular-frete:focus{
+    background: #6affb7;
+    color: #1a1a2e;
+}
+
+.container-cep-frete{
+    display: flex;
+    flex-direction: column;
+    margin: 16px 0;
+    gap: 0.4rem;
+}
+
+.container-cep-inputs{
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    align-items: flex-start;
+}
