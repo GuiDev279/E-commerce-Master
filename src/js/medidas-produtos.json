@@ -1,0 +1,18 @@
+[
+  {
+    "id": "camiseta-roxa",
+    "altura": 3,
+    "largura": 20,
+    "comprimento": 30,
+    "peso": 0.25
+  },
+  {
+    "id": "caneca-branca",
+    "altura": 10,
+    "largura": 12,
+    "comprimento": 10,
+    "peso": 0.45
+  }
+]
+
+
