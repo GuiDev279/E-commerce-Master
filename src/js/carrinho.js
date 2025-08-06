@@ -212,6 +212,15 @@ const valorFrete = document.getElementById("valor-frete");
 
 btnCalcularFrete.addEventListener("click", async () => {
 	const cep = inputCep.value.trim();
+
+	// Validação do CEP
+	const erroCep = document.querySelector(".erro");
+	if (!validarCep(cep)) {
+		erroCep.textContent = "CEP inválido.";
+		erroCep.style.display = "block";
+		return;
+	}
+
 	const valorFrete = await calcularFrete(cep);	
 	const precoFormatado = valorFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 	document.querySelector("#valor-frete .valor").textContent = precoFormatado;
@@ -225,3 +234,8 @@ btnCalcularFrete.addEventListener("click", async () => {
 	totalCarrinhoElemento.textContent = `Total: R$ ${totalComFreteFormatado}`;
 });
 
+
+function validarCep(cep){
+	const regexCep = /^[0-9]{5}-?[0-9]{3}$/;
+	return regexCep.test(cep);
+}

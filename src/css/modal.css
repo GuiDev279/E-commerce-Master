@@ -181,6 +181,13 @@ td .btn-remover{
     font-weight: 400;
 }
 
+.erro{
+    color: #ff4d4d;
+    font-size: 0.875rem;
+    margin-top: 4px;
+    display: none;
+}
+
 #btn-calcular-frete{
     padding: 8px 20px;
     border: 1px solid #6affb7;
