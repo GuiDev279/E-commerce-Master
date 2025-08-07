@@ -56,12 +56,6 @@ Abra o arquivo index.html no navegador
 
 Explore o layout e funcionalidades
 
-📌 Possíveis Melhorias
-Integração com JavaScript para carrinho dinâmico
-
-Backend para cadastro de produtos
-
-Sistema de login e autenticação
 
 👨‍💻 Desenvolvido por
 Guilherme Carvalho (guiDev)
