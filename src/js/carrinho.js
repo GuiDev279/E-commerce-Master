@@ -1,28 +1,3 @@
-/*
-Objetivo 1 - quando clicar no botao de adicionar ao carrinho temos que atualizar o contador, adicionar o produto no localStorage e atualizar o html do carrinho
-	parte 1 - vamos adicionar +1 no icone do carrinho
-		passo 1 - pegar os botões de adicionar ao carrinho do html
-		passo 2 - adicionar uma evento de escuta nesses botões pra quando clicar disparar uma ação
-		passo 3 - pega as informações do produto clicado e adicionar no localStorage
-		passo 4 - atualizar o contador do carrinho de compras
-		passo 5 - renderizar a tabela do carrinho de compras
-
-Objetivo 2 - remover produtos do carrinho
-	passo 1  - pegar o botão de deletar do html
-	passo 2 - adicionar evento de escuta no tbody
-	passo 3 - remover o produto do localStorage
-	passo 4 - atualizar o html do carrinho retirando o produto
-
-Objetivo 3 - Atualizar os valores do carrinho
-	passo 1 - adicionar evento de escuta no input do tbody
-	passo 2 - atualizar o valor total do produto
-	passo 3 - atualizar o valor total do carrinho
-*/
-
-// Objetivo 1 - quando clicar no botao de adicionar ao carrinho temos que atualizar o contador, adicionar o produto no localStorage e atualizar o html do carrinho
-//     parte 1 - vamos adicionar +1 no icone do carrinho
-//         passo 1 - pegar os botões de adicionar ao carrinho do html
-
 const botoesAdicionarAoCarrinho = document.querySelectorAll(".adicionar-ao-carrinho");
 
 // passo 2 - adicionar uma evento de escuta nesses botões pra quando clicar disparar uma ação
@@ -123,16 +98,16 @@ corpoTabela.addEventListener("click", evento => {
 
 // Refatoração: tratamento de quantidade inválida e atualização só se necessário
 corpoTabela.addEventListener("input", evento => {
-	if(evento.target.classList.contains("input-quantidade")){
+	if (evento.target.classList.contains("input-quantidade")) {
 		const id = evento.target.dataset.id;
 		let novaQuantidade = parseInt(evento.target.value);
-		if(isNaN(novaQuantidade) || novaQuantidade < 1) {
+		if (isNaN(novaQuantidade) || novaQuantidade < 1) {
 			novaQuantidade = 1;
 			evento.target.value = 1; // Melhoria: impede valores inválidos
 		}
 		const produtos = obterProdutosDoCarrinho();
 		const produto = produtos.find(produto => produto.id === id);
-		if(produto && produto.quantidade !== novaQuantidade){
+		if (produto && produto.quantidade !== novaQuantidade) {
 			produto.quantidade = novaQuantidade;
 			salvarProdutosNoCarrinho(produtos);
 			atualizarCarrinhoETabela();
@@ -159,7 +134,7 @@ function atualizarValorTotalCarrinho() {
 	document.querySelector("#subtotal-pedidos .valor").textContent = `R$ ${total.toFixed(2).replace('.', ',')}`;
 }
 
-function atualizarCarrinhoETabela(){
+function atualizarCarrinhoETabela() {
 	atualizarContadorCarrinho();
 	renderizarTabelaDoCarrinho();
 	atualizarValorTotalCarrinho();
@@ -168,33 +143,40 @@ function atualizarCarrinhoETabela(){
 atualizarCarrinhoETabela();
 
 async function calcularFrete(cep) {
-	//TROQUE PELA SUA URL DO N8N
-	const url = "https://guidev279.app.n8n.cloud/webhook-test/8b1fd8b0-d120-4bd6-9a9e-08acae963100";
+
+	btnCalcularFrete.disabled = true
+	const textoOriginalDoBotaoDeFrete = btnCalcularFrete.textContent;
+	btnCalcularFrete.textContent = 'Calculando frete...'
+
+	const url = "https://guidev279.app.n8n.cloud/webhook/8b1fd8b0-d120-4bd6-9a9e-08acae963100";
 	try {
 		// Busca as medidas dos produtos do arquivo JSON
-		const medidasResponse = await fetch('./js/medidas-produtos.json');
+		const medidasResponse = await fetch('src/js/medidas-produtos.json');
 		const medidas = await medidasResponse.json();
 
 		// Monta o array de produtos do carrinho com as medidas corretas
 		const produtos = obterProdutosDoCarrinho();
 		const products = produtos.map(produto => {
-			// Procura as medidas pelo id do produto
 			const medida = medidas.find(m => m.id === produto.id);
 			return {
-				quantity: produto.quantidade,
-				height: medida ? medida.height : 4,
-				length: medida ? medida.length : 30,
-				width: medida ? medida.width : 25,
-				weight: medida ? medida.weight : 0.25
+			  id: produto.id,
+			  nome: produto.nome,
+			  preco: produto.preco,
+			  quantidade: produto.quantidade,
+			  imagem: produto.imagem,
+			  height: medida ? medida.height : 4,
+			  length: medida ? medida.length : 30,
+			  width: medida ? medida.width : 25,
+			  weight: medida ? medida.weight : 0.25
 			};
-		});
+		  });
 
 		const resposta = await fetch(url, {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json"
 			},
-			body: JSON.stringify({cep, products}),
+			body: JSON.stringify({ cep, products }),
 		});
 		if (!resposta.ok) throw new Error("Erro ao calcular frete");
 		const resultado = await resposta.json();
@@ -203,12 +185,21 @@ async function calcularFrete(cep) {
 	} catch (erro) {
 		console.error("Erro ao calcular frete:", erro);
 		return null;
+	} finally {
+		btnCalcularFrete.disable = false;
+		btnCalcularFrete.textContent = textoOriginalDoBotaoDeFrete;
 	}
 }
 
 const btnCalcularFrete = document.getElementById("btn-calcular-frete");
 const inputCep = document.getElementById("input-cep");
 const valorFrete = document.getElementById("valor-frete");
+
+inputCep.addEventListener('keydown', () => {
+	if (event.key === 'Enter') {
+		btnCalcularFrete.click();
+	}
+})
 
 btnCalcularFrete.addEventListener("click", async () => {
 	const cep = inputCep.value.trim();
@@ -221,21 +212,20 @@ btnCalcularFrete.addEventListener("click", async () => {
 		return;
 	}
 
-	const valorFrete = await calcularFrete(cep);	
+	const valorFrete = await calcularFrete(cep);
 	const precoFormatado = valorFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 	document.querySelector("#valor-frete .valor").textContent = precoFormatado;
 	document.querySelector("#valor-frete").style.display = "flex";
 
 	const totalCarrinhoElemento = document.querySelector("#total-carrinho");
 	const valorTotalCarrinho = parseFloat(totalCarrinhoElemento.textContent.replace("Total: R$ ", "").replace('.', ',').replace(',', '.'));
-	
+
 	const totalComFrete = valorTotalCarrinho + valorFrete;
 	const totalComFreteFormatado = totalComFrete.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
 	totalCarrinhoElemento.textContent = `Total: R$ ${totalComFreteFormatado}`;
 });
 
-
-function validarCep(cep){
+function validarCep(cep) {
 	const regexCep = /^[0-9]{5}-?[0-9]{3}$/;
 	return regexCep.test(cep);
 }
